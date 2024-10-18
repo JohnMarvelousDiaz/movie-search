@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+
 import MovieSearch from "../components/MovieSearch";
 import Movies from "../components/Movies";
+import Loader from "../components/Loader";
+import ScreenLoader from "../components/ScreenLoader";
+import AboutDeveloper from "../components/AboutTheDeveloper";
+
 import axiosClient from "../api/axios";
-import { CircularProgress, Box, Typography } from "@mui/material";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -12,8 +16,16 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [appLoading, setAppLoading] = useState(true);
+
 
   const API_KEY = "c7b50a28";
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAppLoading(false); 
+    }, 2000);
+  }, []);
 
   useEffect(() => {
     let timer;
@@ -80,48 +92,31 @@ function App() {
 
   return (
     <>
-      <MovieSearch
-        search={search}
-        setSearch={setSearch}
-        year={year}
-        setYear={setYear}
-        plot={plot}
-        setPlot={setPlot}
-        handleSearch={handleSearch}
-        slot={
-          <>
-            {loading ? (
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "70vh",
-                }}
-              >
-                <CircularProgress
-                  variant="determinate"
-                  value={progress}
-                  size={80}
-                />
-                <Typography
-                  variant="h6"
-                  sx={{
-                    position: "absolute",
-                    color: "primary.main",
-                    fontWeight: "bold",
-                    fontSize: "1.5rem",
-                  }}
-                >
-                  {progress}%
-                </Typography>
-              </Box>
-            ) : (
-              <Movies movies={movies} hasSearched={hasSearched} />
-            )}
-          </>
-        }
-      />
+      {appLoading ? (
+        <ScreenLoader />
+      ) : (
+        <>
+        <MovieSearch
+          search={search}
+          setSearch={setSearch}
+          year={year}
+          setYear={setYear}
+          plot={plot}
+          setPlot={setPlot}
+          handleSearch={handleSearch}
+          slot={
+            <>
+              {loading ? (
+                <Loader progress={progress} />
+              ) : (
+                <Movies movies={movies} hasSearched={hasSearched} />
+              )}
+            </>
+          }
+        />
+        <AboutDeveloper/>
+        </>
+      )}
     </>
   );
 }

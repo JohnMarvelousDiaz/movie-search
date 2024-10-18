@@ -9,7 +9,7 @@ import {
 
 import StarIcon from '@mui/icons-material/Star';
 
-import MovieDialog from "../components/MovieDialog";
+import MovieDialog from "./MovieDialog";
 
 function MovieCard ({ movieData }){
   const [openDialog, setOpenDialog] = useState(false);

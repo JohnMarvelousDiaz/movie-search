@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Box } from "@mui/material";
-import MovieCard from "../components/MovieCard.jsx";
+import MovieCard from "./MovieCard.js";
 
 function Movies ({ movies, hasSearched }) {
   return (
