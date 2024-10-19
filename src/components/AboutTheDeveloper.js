@@ -31,7 +31,7 @@ function AboutDeveloper() {
       </Typography>
 
       <Grid container spacing={2} alignItems="center" justifyContent="center">
-        {/* Developer's Avatar */}
+        
         <Grid item xs={12} sm={4} md={3}>
           <Avatar
             alt="Developer Avatar"
@@ -44,7 +44,7 @@ function AboutDeveloper() {
           />
         </Grid>
 
-        {/* Developer's Info */}
+        
         <Grid item xs={12} sm={8} md={6}>
           <Box sx={{ textAlign: "center" }}>
             <Typography
@@ -58,13 +58,14 @@ function AboutDeveloper() {
               John Marvelous Diaz
             </Typography>
             <Typography variant="body1" sx={{ marginBottom: 1 }}>
-              [Brief Bio about you, your expertise, and background.]
+              Web Developer 
             </Typography>
             <Typography variant="body1" sx={{ marginBottom: 1 }}>
-              Contact: [Your Email or Contact Information]
+              0912-407-8843
+              johnmarvelous705@gmail.com
             </Typography>
             <Typography variant="body1" sx={{ marginBottom: 1 }}>
-              Location: [Your Location]
+              Mabalacat, Pampanga
             </Typography>
           </Box>
         </Grid>
